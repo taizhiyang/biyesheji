@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    for 属性规定 label 与哪个表单元素绑定-->
+<!--    两个input中的name值相同表示只能选中一个-->
+    <label for="male">
+        <input type="radio" id="male" name="sex" value="男" v-model="sex">男
+    </label>
+    <label for="female">
+        <input type="radio" id="female" name="sex" value="女" v-model="sex">女
+    </label>
+    <h2>你的性别为：{{sex}}</h2>
+
+    <label for="agree">
+        <input type="checkbox" id="agree" v-model="isAgree">同意协议
+    </label>
+    <h2>你的选择为：{{isAgree}}</h2>
+    <button :disabled="!isAgree">下一步</button>
+    <br>
+    <input type="checkbox" value="篮球" v-model="hobbies">篮球
+    <input type="checkbox" value="排球" v-model="hobbies">排球
+    <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+    <input type="checkbox" value="足球" v-model="hobbies">足球
+    <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+    <h2>你的爱好是：{{hobbies}}</h2>
+
+    <label v-for="item in kindhobbies" :for="item">
+        <input type="checkbox" :value="item" :id="item" v-model="hobbies">{{item}}
+    </label>
+    <br>
+    <!--    1.选择单个-->
+    <select v-model="fruit">
+        <option value="苹果">苹果</option>
+        <option value="香蕉">香蕉</option>
+        <option value="榴莲">榴莲</option>
+        <option value="葡萄">葡萄</option>
+    </select>
+    <h2>你喜欢的水果是：{{fruit}}</h2>
+    <!--    2.选择多个-->
+    <select v-model="fruits" multiple>
+        <option value="苹果">苹果</option>
+        <option value="香蕉">香蕉</option>
+        <option value="榴莲">榴莲</option>
+        <option value="葡萄">葡萄</option>
+    </select>
+    <h2>你喜欢的水果是：{{fruits}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+            sex:'男',
+            isAgree:false,//单选框
+            kindhobbies:['篮球','足球','排球','高尔夫球','乒乓球','羽毛球'],
+            hobbies:[],//多选框
+            fruit:'香蕉',
+            fruits:[],
+        }
+    })
+</script>
+</body>
+</html>

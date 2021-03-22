@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li v-for="item in movies">{{item}}</li>
+    </ul>
+    <h2>当前计数：{{counter}}</h2>
+<!--    <button v-on:click="counter++">+</button>-->
+<!--    <button v-on:click="counter&#45;&#45;">-</button>-->
+    <button v-on:click="add">+</button>
+    <button v-on:click="sub">-</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data:{
+            message:'你好啊，冯业展',
+            movies:['海王','海贼王','十八个手印','盗墓笔记'],
+            counter:0
+        },
+        methods:{
+            add:function (){
+                this.counter++
+            },
+            sub:function (){
+                this.counter--
+            }
+        }
+    })
+</script>
+</body>
+</html>

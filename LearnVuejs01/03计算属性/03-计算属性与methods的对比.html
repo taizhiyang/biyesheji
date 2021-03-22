@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">{{message}}</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊'
+        }
+    })
+</script>
+<script>
+    //属性的增强写法
+    const name='tzy';
+    const age=18;
+    const height=1.88;
+    const obj={
+        name,age,height
+    }
+    console.log(obj)
+</script>
+</body>
+</html>

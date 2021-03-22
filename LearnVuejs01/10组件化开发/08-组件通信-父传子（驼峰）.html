@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+<!--    此处v-bind后面的的东西不支持驼峰-->
+<!--    应该把驼峰标识的改为-类型的-->
+    <cpn v-bind:c-info="info"></cpn>
+</div>
+
+<template id="cpn">
+    <h2>{{cInfo}}</h2>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    const cpn={
+        template:`#cpn`,
+        props:{
+            cInfo:{
+                type:Object,
+                default() {
+                    return {};
+                }
+            }
+        }
+    }
+
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+            info:{
+                name:'冯业展',
+                age:22,
+                height:1.88
+            }
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

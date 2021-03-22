@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <h2>{{message+' '+message}}</h2>
+    <input v-model="message">
+    <h2>{{counter*2}}</h2>
+    <h2 v-once>{{message}}</h2>
+    <h2 v-html="link"></h2>
+<!--    会对原有的数据进行覆盖-->
+    <h2 v-text="message">你好</h2>
+<!--    v-pre用户跳过这个元素和它子元素的编译过程，用于显示原本的mustache语法。-->
+    <p v-pre>{{message}}</p>
+
+
+    <img v-bind:src="imgURL" alt="">
+<!--    //语法糖（同一个意思）-->
+<!--    <img :src="imgURL" alt="">-->
+
+    <a v-bind:href="ahref">百度一下</a>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+            counter:100,
+            link:'<a href="http://www.baidu.com">百度一下</a>',
+            imgURL:'https://img30.360buyimg.com/pop/s1180x940_jfs/t1/144679/6/13328/87344/60457f9eEd5fac2a8/bd93c3e2645d33b6.jpg.webp',
+            ahref:'http://www.baidu.com'
+        }
+    })
+</script>
+</body>
+</html>

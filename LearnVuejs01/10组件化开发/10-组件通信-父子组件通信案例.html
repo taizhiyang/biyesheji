@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn :number1="num1" :number2="num2" v-on:n1click="n1" v-on:n2click="n2"></cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <h2>props:{{number1}}</h2>
+        <h2>data:{{dnumber1}}</h2>
+<!--        <input type="text" v-model="dnumber1">-->
+        <input type="text" v-bind:value="dnumber1" v-on:input="num1Input">
+        <h2>props:{{number2}}</h2>
+        <h2>data:{{dnumber2}}</h2>
+<!--        <input type="text" v-model="dnumber2">-->
+        <input type="text" v-bind:value="dnumber2" v-on:input="num2Input">
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            num1:1,
+            num2:2
+        },
+        methods: {
+          n1(number1){
+              //转变数据类型
+              // this.num1=number1*1
+              this.num1=parseInt(number1)
+              console.log(typeof this.num1)
+          },
+          n2(number2){
+              this.num2=parseInt(number2)
+          }
+        },
+        components:{
+          cpn:{
+              template:`#cpn`,
+              props:{
+                number1:Number,
+                number2:Number
+              },
+              data(){
+                  return{
+                      dnumber1:this.number1,
+                      dnumber2:this.number2
+                  }
+              },
+              methods:{
+                  num1Input(event){
+                       this.dnumber1=event.target.value,
+                       this.$emit('n1click',this.dnumber1),
+                       this.dnumber2=this.dnumber1*100,
+                       this.$emit('n2click',this.dnumber2)
+                  },
+                  num2Input(event){
+                      this.dnumber2=event.target.value,
+                      this.$emit('n2click',this.dnumber2),
+                      this.dnumber1=this.dnumber2/100,
+                      this.$emit('n2click',this.dnumber1)
+                  }
+              }
+          }
+        }
+    })
+</script>
+</body>
+</html>

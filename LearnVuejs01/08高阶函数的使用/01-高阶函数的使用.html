@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">{{message}}{{abc}}</div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊'
+        },
+        computed:{
+            abc(){
+//filter/map/reduce
+// 1.filter函数的使用
+                //filter中的回调函数有一个要求：必须返回一个boolean值
+                //true：当返回true是，函数内部自动将这次回调的n加入到新的数组中
+                //false：当返回false时，函数内部会过滤掉这次的n
+                const nums=[10,20,111,222,444,40,50]
+//                 let newNums=nums.filter(function (n){
+//                     return n<100
+//                 })
+//                 // console.log(newNums)
+// // 2.map函数的使用
+//                 let new2Nums=newNums.map(function (n){
+//                     return n*2
+//                 })
+//                 // console.log(new2Nums)
+// //3.reduce函数的使用
+// //reduce作用对数组内容进行汇总
+//                 let total=new2Nums.reduce(function (a,n){
+//                    return a+n
+//                 },0)
+//                 console.log(total)
+
+                //综合
+                // let total=nums.filter(function (n){
+                //     return n<100
+                // }).map(function (n){
+                //     return n*2
+                // }).reduce(function (a,n){
+                //     return a+n
+                // },0)
+                // console.log(total)
+
+                //再总
+                let total=nums.filter(n=>n<100).map(n=>n*2).reduce((a,n)=>a+n);
+                console.log(total)
+            }
+        }
+    })
+</script>
+</body>
+</html>
